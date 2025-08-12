@@ -1,0 +1,76 @@
+#PYTHON CODE :-
+def add_polynomials(p1, p2):
+    max_len = max(len(p1), len(p2))
+    result = [0] * max_len
+
+    for i in range(max_len):
+        coef1 = p1[i] if i < len(p1) else 0
+        coef2 = p2[i] if i < len(p2) else 0
+        result[i] = coef1 + coef2
+
+    return result
+
+# Example: 3x² + 2x + 5  → [5, 2, 3]
+poly1 = [5, 2, 3]
+# Example: 4x³ + x + 1   → [1, 1, 0, 4]
+poly2 = [1, 1, 0, 4]
+
+sum_poly = add_polynomials(poly1, poly2)
+print("Sum polynomial coefficients:", sum_poly)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//C CODE :-
+#include <stdio.h>
+
+int main() {
+    int n1, n2;
+    printf("Enter degree of first polynomial: ");
+    scanf("%d", &n1);
+    printf("Enter degree of second polynomial: ");
+    scanf("%d", &n2);
+
+    int size = (n1 > n2 ? n1 : n2) + 1;
+    int poly1[size], poly2[size], sum[size];
+
+    // Initialize arrays to 0
+    for (int i = 0; i < size; i++) {
+        poly1[i] = 0;
+        poly2[i] = 0;
+    }
+
+    printf("Enter coefficients of first polynomial:\n");
+    for (int i = 0; i <= n1; i++)
+        scanf("%d", &poly1[i]);
+
+    printf("Enter coefficients of second polynomial:\n");
+    for (int i = 0; i <= n2; i++)
+        scanf("%d", &poly2[i]);
+
+    // Add polynomials
+    for (int i = 0; i < size; i++)
+        sum[i] = poly1[i] + poly2[i];
+
+    printf("Sum polynomial coefficients:\n");
+    for (int i = size - 1; i >= 0; i--)
+        printf("%dx^%d ", sum[i], i);
+
+    return 0;
+}
+
