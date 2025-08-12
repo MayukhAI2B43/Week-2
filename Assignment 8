@@ -1,0 +1,128 @@
+#PYTHON CODE :-
+def display(arr):
+    print("Array:", arr)
+
+arr = []
+
+# Insert elements
+arr.append(10)
+arr.append(20)
+arr.append(30)
+display(arr)
+
+# Insert at specific position
+arr.insert(1, 15)   # Insert 15 at index 1
+display(arr)
+
+# Delete element
+arr.remove(20)      # Remove first occurrence of 20
+display(arr)
+
+# Search element
+x = 30
+if x in arr:
+    print(f"{x} found at index {arr.index(x)}")
+else:
+    print(f"{x} not found")
+
+# Update element
+arr[0] = 5
+display(arr)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//C CODE :-
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int *arr = NULL;
+    int size = 0, choice, pos, val, found, i;
+
+    while (1) {
+        printf("\nMenu:\n1. Insert\n2. Delete\n3. Search\n4. Display\n5. Exit\n");
+        printf("Enter choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+        case 1: // Insert
+            printf("Enter value: ");
+            scanf("%d", &val);
+            arr = realloc(arr, (size + 1) * sizeof(int));
+            arr[size++] = val;
+            break;
+
+        case 2: // Delete
+            printf("Enter value to delete: ");
+            scanf("%d", &val);
+            found = 0;
+            for (i = 0; i < size; i++) {
+                if (arr[i] == val) {
+                    for (int j = i; j < size - 1; j++)
+                        arr[j] = arr[j + 1];
+                    size--;
+                    arr = realloc(arr, size * sizeof(int));
+                    found = 1;
+                    break;
+                }
+            }
+            if (!found) printf("Value not found!\n");
+            break;
+
+        case 3: // Search
+            printf("Enter value to search: ");
+            scanf("%d", &val);
+            found = 0;
+            for (i = 0; i < size; i++) {
+                if (arr[i] == val) {
+                    printf("Found at position %d\n", i);
+                    found = 1;
+                    break;
+                }
+            }
+            if (!found) printf("Value not found!\n");
+            break;
+
+        case 4: // Display
+            printf("Array: ");
+            for (i = 0; i < size; i++) printf("%d ", arr[i]);
+            printf("\n");
+            break;
+
+        case 5:
+            free(arr);
+            return 0;
+
+        default:
+            printf("Invalid choice!\n");
+        }
+    }
+}
