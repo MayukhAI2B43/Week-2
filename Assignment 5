@@ -1,0 +1,68 @@
+//C CODE :-
+#include <stdio.h>
+
+int main() {
+    int rows, cols;
+    printf("Enter rows and columns: ");
+    scanf("%d %d", &rows, &cols);
+
+    int mat[rows][cols];
+    int zeroCount = 0;
+
+    printf("Enter matrix elements:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            scanf("%d", &mat[i][j]);
+            if (mat[i][j] == 0)
+                zeroCount++;
+        }
+    }
+
+    int totalElements = rows * cols;
+
+    if (zeroCount > totalElements / 2)
+        printf("Matrix is Sparse\n");
+    else
+        printf("Matrix is Not Sparse\n");
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#PYTHON CODE :-
+def is_sparse(matrix):
+    rows = len(matrix)
+    cols = len(matrix[0])
+    zero_count = sum(1 for row in matrix for val in row if val == 0)
+    return zero_count > (rows * cols) / 2
+
+# Example matrix
+matrix = [
+    [0, 0, 3],
+    [0, 5, 0],
+    [0, 0, 0]
+]
+
+if is_sparse(matrix):
+    print("Matrix is Sparse")
+else:
+    print("Matrix is Not Sparse")
