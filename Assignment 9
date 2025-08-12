@@ -1,0 +1,82 @@
+#PYTHON CODE :-
+def is_identity_matrix(mat):
+    rows = len(mat)
+    cols = len(mat[0])
+    if rows != cols:
+        return False  # Must be square
+
+    for i in range(rows):
+        for j in range(cols):
+            if i == j and mat[i][j] != 1:
+                return False
+            elif i != j and mat[i][j] != 0:
+                return False
+    return True
+
+# Example
+matrix = [
+    [1, 0, 0],
+    [0, 1, 0],
+    [0, 0, 1]
+]
+
+if is_identity_matrix(matrix):
+    print("Identity Matrix")
+else:
+    print("Not an Identity Matrix")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//C CODE :-
+#include <stdio.h>
+
+int main() {
+    int n, i, j, isIdentity = 1;
+    printf("Enter size of square matrix: ");
+    scanf("%d", &n);
+
+    int mat[n][n];
+    printf("Enter matrix elements:\n");
+    for (i = 0; i < n; i++)
+        for (j = 0; j < n; j++)
+            scanf("%d", &mat[i][j]);
+
+    // Check identity matrix
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            if ((i == j && mat[i][j] != 1) || (i != j && mat[i][j] != 0)) {
+                isIdentity = 0;
+                break;
+            }
+        }
+    }
+
+    if (isIdentity)
+        printf("Identity Matrix\n");
+    else
+        printf("Not an Identity Matrix\n");
+
+    return 0;
+}
