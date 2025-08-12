@@ -1,0 +1,68 @@
+#PYTHON CODE :-
+def sum_of_diagonals(mat):
+    n = len(mat)
+    main_diag = sum(mat[i][i] for i in range(n))
+    anti_diag = sum(mat[i][n-1-i] for i in range(n))
+    return main_diag + anti_diag - (mat[n//2][n//2] if n % 2 != 0 else 0)
+
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+print("Sum of both diagonals:", sum_of_diagonals(matrix))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//C CODE :-
+#include <stdio.h>
+
+#define N 3
+
+int sumOfDiagonals(int mat[N][N]) {
+    int sum = 0;
+    for (int i = 0; i < N; i++) {
+        sum += mat[i][i];            // Main diagonal
+        sum += mat[i][N-1-i];        // Anti diagonal
+    }
+    if (N % 2 != 0)                  // Remove middle element if counted twice
+        sum -= mat[N/2][N/2];
+    return sum;
+}
+
+int main() {
+    int matrix[N][N] = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+
+    printf("Sum of both diagonals: %d\n", sumOfDiagonals(matrix));
+    return 0;
+}
